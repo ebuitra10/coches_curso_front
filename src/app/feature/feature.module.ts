@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { FeatureRoutingModule } from './feature-routing.module';
 import { FeatureComponent } from './feature.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -11,7 +12,8 @@ import { FeatureComponent } from './feature.component';
   ],
   imports: [
     CommonModule,
-    FeatureRoutingModule
+    FeatureRoutingModule,
+    ReactiveFormsModule,
   ]
 })
 export class FeatureModule { }
