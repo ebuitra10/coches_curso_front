@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 import { AppBaseComponent } from 'src/app/core/guards/dto/services/utils/AppBaseComponent';
 import { lastValueFrom } from "rxjs";
 import { TokenService } from "src/app/core/guards/dto/services/token.service";
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -55,7 +56,11 @@ export class LoginComponent extends AppBaseComponent{
       this.router.navigateByUrl("/portafolio");
 
     }else{
-      alert("Hay errores en el formulario");
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Hay errores en el formulario, por favor revisalo!',
+      });
       console.log(this.getAllErrorsForm(this.loginForm));
       this.loginForm.markAllAsTouched();
     }
