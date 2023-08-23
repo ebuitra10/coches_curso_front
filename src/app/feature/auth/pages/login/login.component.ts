@@ -61,10 +61,17 @@ export class LoginComponent extends AppBaseComponent{
     }
     
   }
+  
 
   public signUp(): void{
     this.router.navigateByUrl("/autenticacion/registro"); //navegacion mediante la clase router
   }
+
+  /**
+   * retorna mensaje de erorr de un campo del formulario
+   * @param field
+   * @returns 
+   */
 
   public getErrorForm(field: string): string{
 

@@ -22,74 +22,77 @@
               ">
             <div class="card-body p-5 shadow-5 text-center">
               <h2 class="fw-bold mb-5">Resgistrate ahora</h2>
-              <form>
+              <form role="form" [formGroup]="registerForm" *ngIf="registered == false">
                 <!-- 2 column grid layout with text inputs for the first and last names -->
                 <div class="row">
-                  <div class="col-md-6 mb-4">
+                  <div class="col-md-12 mb-4">
                     <div class="form-outline">
-                      <input type="text" id="form3Example1" class="form-control" />
-                      <label class="form-label" for="form3Example1">Primer nombre</label>
+                      <label class="form-label" for="form3Example1">Nombre Completo</label>
+                      <input formControlName="fullName" type="text" id="form3Example1" class="form-control" />
+                      <span class="text-danger">{{getErrorForm('fullName')}}</span>
                     </div>
                   </div>
-                  <div class="col-md-6 mb-4">
+                  <div class="col-md-12 mb-4">
                     <div class="form-outline">
-                      <input type="text" id="form3Example2" class="form-control" />
-                      <label class="form-label" for="form3Example2">Apellido</label>
+                      <label class="form-label" for="form3Example2">Numero de identificacion</label>
+                      <input formControlName="cardId" type="text" id="form3Example1" class="form-control" />
+                      <span class="text-danger">{{getErrorForm('cardId')}}</span>
                     </div>
                   </div>
                 </div>
   
                 <!-- Email input -->
                 <div class="form-outline mb-4">
-                  <input type="email" id="form3Example3" class="form-control" />
                   <label class="form-label" for="form3Example3">Email</label>
+                  <input formControlName="email" type="email" id="form3Example3" class="form-control" />
+                  <span class="text-danger">{{getErrorForm('email')}}</span>
                 </div>
-  
-                <!-- Password input -->
+
+                <!-- Number Cellphone -->
                 <div class="form-outline mb-4">
-                  <input type="contraseña" id="form3Example4" class="form-control" />
-                  <label class="form-label" for="form3Example4">contraseña</label>
+                  <label class="form-label" for="form3Example3">Numero de celular</label>
+                  <input formControlName="numberCellphone" type="email" id="form3Example4" class="form-control" />
+                  <span class="text-danger">{{getErrorForm('numberCellphone')}}</span>
                 </div>
+
   
                 <!-- Checkbox -->
                 <div class="form-check d-flex justify-content-center mb-4">
                   <input class="form-check-input me-2" type="checkbox" value="" id="form2Example33" checked />
                   <label class="form-check-label" for="form2Example33">
-                    Suscribete a nuestro boletin
+                    Acepto terminos y codiciones
                   </label>
                 </div>
   
                 <!-- Submit button -->
-                <button type="submit" class="btn btn-primary btn-block mb-4">
-                  Registro de usuario
+                <button (click)="register()" class="btn btn-primary btn-block mb-4">
+                  Registrarse
                 </button>
   
                 <!-- Register buttons -->
                 <div class="text-center">
-                  <p>O registrate con:</p>
-                  <button type="button" class="btn btn-link btn-floating mx-1">
-                    <i class="fab fa-facebook-f"></i>
-                  </button>
-  
-                  <button type="button" class="btn btn-link btn-floating mx-1">
-                    <i class="fab fa-google"></i>
-                  </button>
-  
-                  <button type="button" class="btn btn-link btn-floating mx-1">
-                    <i class="fab fa-twitter"></i>
-                  </button>
-  
-                  <button type="button" class="btn btn-link btn-floating mx-1">
-                    <i class="fab fa-github"></i>
-                  </button>
+                  <p>Si ya te encuentras registrado: </p>
+                  <a routerLink="../inicio-sesion">inicia sesion aquí</a>
                 </div>
               </form>
+
+              <div *ngIf="registered == true">
+                <p>Registro exitoso, su contraseña predeterminada es</p>
+                <h3>{{passwordGenerated}}</h3>
+                <p>Guardala en un lugar seguro, no la puedes recuperar</p>
+                <div class="text-center">
+                  <p>Si ya te registraste:</p>
+                  <button (click)="signIn()" type="submit" class="btn btn-primary btn-block mb-3">
+                      Da click aqui para Iniciar sesion
+                  </button>
+              </div>
+              </div>
             </div>
           </div>
         </div>
   
         <div class="col-lg-6 mb-5 mb-lg-0">
-          <img src="https://mdbootstrap.com/img/new/ecommerce/vertical/004.jpg" class="w-100 rounded-4 shadow-4"
+          <img src="https://thumbs.dreamstime.com/b/autom%C3%B3viles-mercedes-benz-estacionados-en-fila-157573316.jpg" class="w-100 rounded-4 shadow-4"
             alt="" />
         </div>
       </div>
